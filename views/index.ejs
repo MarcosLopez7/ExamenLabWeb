@@ -5,7 +5,20 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+
+    <% include templates/nav.ejs %>
+
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h2>tu has visto esta vista <%= veces%></h2>
+    <p>
+      Existe un segmento del Mercado Gamer que experimenta un dolor en el Mercado: hay incertidumbre por parte del
+      consumidor hacia los sitios web que realizan las reviews de los juegos y por lo tanto dificulta la toma de
+      decisiones a la hora de realizar una compra con un presupuesto determinado.
+
+      Como respuesta a este problema proponemos crear un sistema gratuito de recomendaciones inteligentes de videojuegos
+      basado en las reseñas que dejan tus amigos, los Tweets de positivos o negativos de otros gamers en el mundo.
+
+    </p>
+
   </body>
 </html>

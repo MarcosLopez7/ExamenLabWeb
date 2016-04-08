@@ -4,11 +4,38 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var mysql = require('mysql');
+var MySQLStore = require('express-mysql-session')(session);
+var parseurl = require('parseurl');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var login = require('./routes/login');
+
 
 var app = express();
+
+var options = {
+  host: 'localhost',
+  port: 3306,
+  user: 'root',
+  password: '2664300191',
+  database: 'Labwebapps',
+  checkExpirationInterval: 900000,// How frequently expired sessions will be cleared; milliseconds.
+  expiration: 86400000,// The maximum age of a valid session; milliseconds.
+  createDatabaseTable: true,// Whether or not to create the sessions database table, if one does not already exist.
+  schema: {
+    tableName: 'sessions',
+    columnNames: {
+      session_id: 'session_id',
+      expires: 'expires',
+      data: 'data'
+    }
+  }
+};
+
+var sessionStore = new MySQLStore(options);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,9 +48,33 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  key: 'session_cookie_name',
+  secret: 'session_cookie_secret',
+  store: sessionStore,
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use(function (req, res, next) {
+  var views = req.session.views;
+
+  if (!views) {
+    views = req.session.views = {};
+  }
+
+  // get the url pathname
+  var pathname = parseurl(req).pathname;
+
+  // count the views
+  views[pathname] = (views[pathname] || 0) + 1;
+
+  next();
+})
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
