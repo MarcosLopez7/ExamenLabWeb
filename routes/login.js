@@ -8,12 +8,13 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     res.render('login', {
         title: 'Inteligent Videogame Reviews' ,
-        veces: req.session.views['/login'].toString()
+        veces: req.session.views['/login'].toString(),
+        session: req.session.email
     });
 
-    console.log(req.cookies);
+    /*console.log(req.cookies);
     console.log('================');
-    console.log(req.session);
+    console.log(req.session);*/
 });
 
 module.exports = router;

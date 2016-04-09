@@ -13,6 +13,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
 var registro = require('./routes/registro');
+var logout = require('./routes/logout');
 
 
 var app = express();
@@ -49,12 +50,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(session({
   key: 'session_cookie_name',
-  secret: 'session_cookie_secret',
+  secret: 'session_cookie_secret2',
   store: sessionStore,
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: false,
+  unset: 'destroy',
+  cookie: {
+    expires: false
+  },
 }));
 
 app.use(function (req, res, next) {
@@ -77,6 +83,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/login', login);
 app.use('/registro', registro);
+app.use('/logout', logout);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

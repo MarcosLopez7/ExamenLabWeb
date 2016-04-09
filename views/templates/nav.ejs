@@ -1,4 +1,7 @@
 <a href="/">Home</a> |
-<a href="/login">Login</a> |
-<a>Logout</a> |
-<a href="/registro">Registrar</a>
+<% if (session == null) {%>
+    <a href="/login">Login</a> |
+    <a href="/registro">Registrar</a>
+<%} else {%>
+    <a href="/logout">Logout</a> |
+<%}%>
