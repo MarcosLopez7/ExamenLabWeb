@@ -2,23 +2,29 @@
 <html>
   <head>
     <title><%= title %></title>
+    
     <link rel='stylesheet' href='/stylesheets/style.css' />
+
   </head>
+  
   <body>
 
     <% include templates/nav.ejs %>
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class ="jumbotron-heading"> <%= title %> </h1>
 
-    <h1><%= title %></h1>
-    <h2>tu has visto esta vista <%= veces%></h2>
-    <p>
-      Existe un segmento del Mercado Gamer que experimenta un dolor en el Mercado: hay incertidumbre por parte del
-      consumidor hacia los sitios web que realizan las reviews de los juegos y por lo tanto dificulta la toma de
-      decisiones a la hora de realizar una compra con un presupuesto determinado.
+        <p class="lead text-muted"> 
+            Existe un segmento del Mercado Gamer que experimenta un dolor en el Mercado: hay incertidumbre por parte del
+                  consumidor hacia los sitios web que realizan las reviews de los juegos y por lo tanto dificulta la toma de
+                  decisiones a la hora de realizar una compra con un presupuesto determinado.<br/><br/><br/>
+                  Como respuesta a este problema proponemos crear un sistema gratuito de recomendaciones inteligentes de videojuegos
+                  basado en las reseñas que dejan tus amigos, los Tweets de positivos o negativos de otros gamers en el mundo.
+        </p>
 
-      Como respuesta a este problema proponemos crear un sistema gratuito de recomendaciones inteligentes de videojuegos
-      basado en las reseñas que dejan tus amigos, los Tweets de positivos o negativos de otros gamers en el mundo.
-
-    </p>
+      </div>
+    </div>
+    <h2>tu has visto esta vista <%= veces%> veces</h2>
 
   </body>
 </html>

@@ -3,20 +3,39 @@
 <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+        <link href="/stylesheets/signin.css" rel="stylesheet">
+        <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
 </head>
 <body>
 
 <% include templates/nav.ejs %>
 
-<h1>Login</h1>
+  <div class="container">
+    <form class="form-signin" method="post" action="/login">
+      <h2 class="form-signin-heading">Login</h2>
+      <label class="sr-only" for="inputEmail">
+        Email
+      </label>
+      
+      <input id="inputEmail" type="text" name="username" class="form-control" placeholder="Correo Electronico" required autofocus>
+      
+      <br/>
+      
+      <label for="inputPassword" class="sr-only">
+        Contraseña
+      </label>
+      <input type="password" name="pass" class="form-control" placeholder="Contraseña" required>
+      
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="rem" value="recordarme">Recordarme
+        </label>
+      </div>
+    
+      <button class ="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    </form>
+  </div>
 <h2>tu has visto esta vista <%= veces%></h2>
-
-<form method="post" action="/login">
-    <label>Email: </label><input type="text" name="username"><br>
-    <label>Contraseña: </label><input type="password" name="pass"><br>
-    <label>Recordar: </label><input type="checkbox" name="rem">
-    <button type="submit">submit</button>
-</form>
-
 </body>
+
 </html>

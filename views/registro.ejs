@@ -2,29 +2,45 @@
 <html>
 <head>
     <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <link href="/stylesheets/signin.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
 
 <% include templates/nav.ejs %>
 
-<h1>Registro</h1>
-<h2>tu has visto esta vista <%= veces%></h2>
+<div class="container">
 
-<form method="post" action="/registro">
-    <label>Nombre: </label> <input type="text" name="nombre"><br>
-    <label>Apellido Paterno: </label><input type="text" name="ap1"><br>
-    <label>Apellido Materno: </label> <input type="text" name="ap2"><br>
-    <label>Fecha de nacimiento: </label> <input type="date" name="fecha"><br>
-    <label>Genero: </label> <select name="gen"><option>Femenino</option><option>Masculino</option></select><br>
-    <label>Número celular: </label> <input type="text" name="cel"><br>
-    <label>Número Fijo: </label> <input type="text" name="tel"><br>
-    <label>Extensión: </label> <input type="text" name="ext"><br>
-    <label>Email: </label> <input type="text" name="email"><br>
-    <label>Password: </label> <input type="password" name="pass"><br>
 
-    <button type="submit">submit</button>
+<form class=form-signin method="post" action="/registro">
+    <h2 class="form-signin-heading">Registro</h2>
+
+    <label for="inputNombre"> Nombre: </label> <input id=inputNombre class="form-control" placeholder="Nombre" type="text" name="nombre" required autofocus><br>
+
+    <label for="inputApellidop">Apellido Paterno: </label><input type="text" name="ap1"  id="inputApellidop" class="form-control" placeholder="Apellido Paterno" required autofocus><br>
+    
+    <label for ="inputApellidom">Apellido Materno: </label> <input type="text" name="ap2" id="inputApellidom" class="form-control" placeholder="Apellido Materno" required autofocus><br>
+    
+    <label>Fecha de nacimiento: </label> <input type="date" name="fecha" id="inputFecha" class="form-control" placeholder="Fecha de nacimiento" required autofocus><br>
+    
+    <label>Genero: </label> <select name="gen" class="form-control"><option>Femenino</option><option>Masculino</option></select><br>
+    
+    <label for="inputCel">Número celular: </label> <input type="text" name="cel" id="inputCel" class="form-control" placeholder="Celular" required autofocus><br>
+    
+    <label for="inputFijo">Número Fijo: </label> <input type="text" name="tel" id="inputFijo" class="form-control" placeholder="Telefono Fijo" required autofocus><br>
+    
+    <label for="inputExt">Extensión: </label> <input type="text" name="ext" id="inputExt" class="form-control" placeholder="Extension" required autofocus><br>
+    
+    <label for="inputEmail">Email: </label> <input type="text" name="email" id="inputEmail" class="form-control" placeholder="Correo Electronico" required autofocus><br>
+    
+    <label for="inputPass">Password: </label> <input type="password" name="pass" id="inputPass" class="form-control" placeholder="Password" required autofocus><br>
+
+    <button class ="btn btn-lg btn-primary btn-block" type="submit">Registrar</button>
 </form>
-
+</div>>
+<h2>tu has visto esta vista <%= veces%></h2>
 </body>
 </html>
