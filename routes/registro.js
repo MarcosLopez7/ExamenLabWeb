@@ -4,11 +4,11 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET login page. */
+/* GET registro page. */
 router.get('/', function(req, res, next) {
-    res.render('login', {
+    res.render('registro', {
         title: 'Inteligent Videogame Reviews' ,
-        veces: req.session.views['/login'].toString()
+        veces: req.session.views['/registro'].toString()
     });
 
     console.log(req.cookies);

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+
+<% include templates/nav.ejs %>
+
+<h1>Registro</h1>
+<h2>tu has visto esta vista <%= veces%></h2>
+
+<form method="post" action="/registro">
+    <label>Nombre: </label> <input type="text" name="nombre"><br>
+    <label>Apellido Paterno: </label><input type="text" name="ap1"><br>
+    <label>Apellido Materno: </label> <input type="text" name="ap2"><br>
+    <label>Fecha de nacimiento: </label> <input type="date" name="fecha"><br>
+    <label>Genero: </label> <select name="gen"><option>Femenino</option><option>Masculino</option></select><br>
+    <label>Número celular: </label> <input type="text" name="cel"><br>
+    <label>Número Fijo: </label> <input type="text" name="tel"><br>
+    <label>Extensión: </label> <input type="text" name="ext"><br>
+    <label>Email: </label> <input type="text" name="email"><br>
+    <label>Password: </label> <input type="password" name="pass"><br>
+
+    <button type="submit">submit</button>
+</form>
+
+</body>
+</html>
